@@ -1,0 +1,23 @@
+{{ form_start(form) }}
+
+{% include 'components/form-controller.html.twig' with {
+    'label': 'name'|trans({}, 'messages.question'),
+    'field': form.askerName
+} %}
+
+{% include 'components/form-controller.html.twig' with {
+    'label': 'email'|trans({}, 'messages.question'),
+    'field': form.email
+} %}
+
+{% include 'components/form-controller.html.twig' with {
+    'label': 'question'|trans({}, 'messages.question'),
+    'field': form.question
+} %}
+
+<div class="card-footer text-right">
+    <button class="btn btn-primary">{{ button_label|default('save'|trans({}, 'messages.question')) }}</button>
+    <a href="{{ path('app_question_index') }}" class="btn btn-secondary">{{ 'all_questions'|trans({}, 'messages.question') }}</a>
+</div>
+
+{{ form_end(form) }}

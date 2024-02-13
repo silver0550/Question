@@ -1,0 +1,3 @@
+email.not_blank: "Az Email nem lehet üres"
+askerName.not_blank: "A kérdező neve nem lehet üres"
+question.not_blank: "A kérdés nem lehet üres"

@@ -1,3 +1,37 @@
 body {
-    background-color: lightgray;
+    background-color: #2a303c;
+}
+
+.dark-card {
+    background-color: #242933;
+    color: #c5c4c4;
+}
+
+.dark-card .form-control {
+    background-color: #2a303c;
+    color: #c5c4c4;
+    border: 1px solid #3a3f4b;
+}
+
+.dark-card .form-control.error {
+    border-color: #861515;
+}
+
+.dark-card .form-control:focus {
+    background-color: #2a303c;
+    color: #c5c4c4;
+    border-color: #4989ac;
+    box-shadow: none;
+}
+
+.error-label {
+    color: #861515;
+}
+
+.dark-card input:-webkit-autofill,
+.dark-card input:-webkit-autofill:hover,
+.dark-card input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #c5c4c4;
+    -webkit-box-shadow: 0 0 0px 1000px #2a303c inset;
+    transition: background-color 5000s ease-in-out 0s;
 }
