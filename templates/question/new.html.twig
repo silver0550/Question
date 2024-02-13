@@ -6,10 +6,16 @@
     <div class="d-flex align-items-center justify-content-center"
          style="min-height: 100vh;">
         <div class="col-md-8" style="max-width: 700px">
-            {% include 'components/dark_card.html.twig' with {
-                'title': 'new_question'|trans({}, 'messages.question') ,
-                'form': form
-            } %}
+            {% if success is defined %}
+                <div class="text-white text-l-center" >
+                    {{ 'success'|trans({}, 'messages.question') }}
+                </div>
+            {% else %}
+                {% include 'components/dark_card.html.twig' with {
+                    'title': 'new_question'|trans({}, 'messages.question') ,
+                    'form': form
+                } %}
+            {% endif %}
         </div>
     </div>
 {% endblock %}

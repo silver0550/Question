@@ -35,7 +35,10 @@ class QuestionController extends AbstractController
             $entityManager->persist($questionDTO->toEntity());
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_question_index', [], Response::HTTP_SEE_OTHER);
+            return $this->render('question/new.html.twig', [
+                'success' => true,
+                'form' => $form,
+            ]);
         }
 
         return $this->render('question/new.html.twig', [
