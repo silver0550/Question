@@ -1,4 +1,8 @@
-new_question: "Új kérdés"
+new_question: 'Új kérdés'
+questions: 'Kérdések'
+answer: 'Válasz'
+actions: 'lehetőségek'
+show: 'Nézet'
 name: 'Név'
 email: 'E-mail'
 question: 'Kérdés'
