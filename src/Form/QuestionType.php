@@ -6,6 +6,7 @@ use App\DTO\QuestionDTO;
 use App\Entity\Question;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -21,7 +22,7 @@ class QuestionType extends AbstractType
             ->add('email', TextType::class, [
                 'required' => false,
             ])
-            ->add('question', TextType::class, [
+            ->add('question', TextareaType::class, [
                 'required' => false,
             ]);
     }

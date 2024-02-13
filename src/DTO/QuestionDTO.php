@@ -11,6 +11,7 @@ class QuestionDTO
     private ?string $askerName;
 
     #[Assert\NotBlank(message: "email.not_blank")]
+    #[Assert\Email(message: "email.wrong")]
     private ?string $email;
 
     #[Assert\NotBlank(message: "question.not_blank")]
