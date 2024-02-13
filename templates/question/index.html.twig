@@ -1,41 +1,53 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Question index{% endblock %}
+{% block title %}{{ 'questions'|trans({}, 'messages.question') }}{% endblock %}
 
 {% block body %}
-    <h1>{{ 'welcome'|trans }}</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Asker_name</th>
-                <th>Email</th>
-                <th>Question</th>
-                <th>Has_answer</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for question in questions %}
-            <tr>
-                <td>{{ question.id }}</td>
-                <td>{{ question.askerName }}</td>
-                <td>{{ question.email }}</td>
-                <td>{{ question.question }}</td>
-                <td>{{ question.hasAnswer ? 'Yes' : 'No' }}</td>
-                <td>
-                    <a href="{{ path('app_question_show', {'id': question.id}) }}">show</a>
-                    <a href="{{ path('app_question_edit', {'id': question.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="table-responsive mx-5 my-3 ">
+        <h2 class="text-white">{{ 'questions'|trans({}, 'messages.question') }}</h2>
+        <table class="dark-table">
+            <thead>
+                <tr>
+                    <th>{{ 'name'|trans({}, 'messages.question') }}</th>
+                    <th>{{ 'email'|trans({}, 'messages.question') }}</th>
+                    <th>{{ 'question'|trans({}, 'messages.question') }}</th>
+                    <th>{{ 'answer'|trans({}, 'messages.question') }}</th>
+                    <th>{{ 'actions'|trans({}, 'messages.question') }}</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for question in questions %}
+                <tr>
+                    <td>{{ question.askerName }}</td>
+                    <td>{{ question.email }}</td>
+                    <td>
+                        {{ question.question|length > 50
+                            ? question.question|slice(0, 50) ~ '...'
+                            : question.question }}
+                    </td>
+                    <td class="actions">
+                        {{ question.hasAnswer
+                            ? 'yes'|trans({}, 'messages.global')
+                            : 'no'|trans({}, 'messages.global')
+                        }}
+                    </td>
+                    <td class="actions">
+                        <a href="{{ path('app_question_show', {'id': question.id}) }}"
+                           title="{{ 'show'|trans({}, 'messages.question') }}" >
+                            {{ include('components/icons/eye.html.twig') }}
+                        </a>
+                    </td>
 
-    <a href="{{ path('app_question_new') }}">Create new</a>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <a class="btn btn-primary mx-5" href="{{ path('app_question_new') }}">{{ 'new_question'|trans({}, 'messages.question') }}</a>
+
 {% endblock %}
