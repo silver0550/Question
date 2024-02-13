@@ -9,7 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: QuestionRepository::class)]
 #[ORM\Table(name: "questions")]
 #[ORM\HasLifecycleCallbacks]
-
 class Question
 {
     #[ORM\Id]
@@ -17,7 +16,7 @@ class Question
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(name:'asker_name', length: 255)]
+    #[ORM\Column(name: 'asker_name', length: 255)]
     private ?string $askerName = null;
 
     #[ORM\Column(length: 255)]
@@ -50,6 +49,7 @@ class Question
     {
         $this->updatedAt = new \DateTimeImmutable();
     }
+
     public function getId(): ?int
     {
         return $this->id;
