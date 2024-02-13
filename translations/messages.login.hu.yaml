@@ -1,0 +1,8 @@
+title: 'Bejelentkezés'
+login: 'Belépés'
+logout: 'Kilépés'
+userName: 'Felhasználónév'
+password: 'Jelszó'
+logged_in: 'Be van jelentkezve mint '
+
+Invalid credentials.: 'Hibás felhasználónév vagy jelszó'

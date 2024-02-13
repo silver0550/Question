@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+    <div class="d-flex align-items-center justify-content-center"
+         style="min-height: 100vh;">
+        <div class="col-md-8" style="max-width: 500px">
+            <div class="card dark-card">
+                <div class="card-header">
+                    <h1 class="h5"> {{ 'title'|trans({}, 'messages.login') }} </h1>
+                </div>
+                <div class="card-body">
+            <form method="post">
+                {% if error %}
+                    <div class="error-label text-center">{{ error.messageKey|trans({}, 'messages.login') }}</div>
+                {% endif %}
+
+                {% if app.user %}
+                    <div class="mb-3 text-center">
+                        {{ 'logged_in'|trans({}, 'messages.login') }} {{ app.user.userIdentifier }},
+                        <a href="{{ path('app_logout') }}">
+                            {{ 'logout'|trans({}, 'messages.login') }}
+                        </a>
+                    </div>
+                {% endif %}
+
+                <label for="inputUsername">{{ 'userName'|trans({}, 'messages.login') }}</label>
+                <input type="text"
+                       value="{{ last_username }}"
+                       name="username"
+                       id="inputUsername"
+                       class="form-control mb-3"
+                       autocomplete="username"
+                       required
+                       autofocus>
+                <label for="inputPassword">{{ 'password'|trans({}, 'messages.login') }}</label>
+                <input type="password"
+                       name="password"
+                       id="inputPassword"
+                       class="form-control mb-3"
+                       autocomplete="current-password"
+                       required>
+
+                <input type="hidden" name="_csrf_token"
+                       value="{{ csrf_token('authenticate') }}"
+                >
+
+                <button class="btn btn-primary" type="submit">
+                    {{ 'login'|trans({}, 'messages.login') }}
+                </button>
+            </form>
+            </div>
+    </div>
+        </div>
+    </div>
+{% endblock %}
